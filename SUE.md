@@ -1,3 +1,15 @@
-#Schulübung 12.09.2023
+# Über mich
 
-.md File erfolgreich in meinem Repository commited
+## Name: 
+**Wiktor Brzychczy**
+
+## Hobbies:
+- keine
+
+## Lieblingsessen:
+- Risotto ai funghi
+
+## Lieblingsreptil:
+- Dornteufel
+
+
