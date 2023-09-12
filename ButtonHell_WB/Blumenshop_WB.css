@@ -1,0 +1,85 @@
+
+table, td, th, tr
+{
+    border: 5px solid #9147ff ;
+    
+}
+table
+{
+    background-color:rgba(255, 206, 255, 0.95) ;
+}
+
+
+button{
+display: inline-block;
+outline: 0;
+border: none;
+cursor: pointer;
+font-weight: 600;
+border-radius: 8px;
+font-size: 23px;
+height: 50px;
+width: 150px;
+background-color: #9147ff;
+color: white;
+padding: 0 20px;
+}
+button:hover {
+    background-color: #772ce8;
+}
+
+body
+{ 
+ background-image: url("Flowershop_WB.png");
+ background-repeat: repeat;
+ background-size: 500px;
+ font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; 
+ font-size: large;  
+ text-align:center;
+}
+
+
+.inp{
+color: rgba(0,0,0,.87);
+border-bottom-color: rgba(0,0,0,.42);
+font-size: 1rem;
+font-weight: 400;
+letter-spacing: .009375em;
+text-decoration: inherit;
+text-transform: inherit;
+align-self: flex-end;
+box-sizing: border-box;
+width: 80;
+padding: 20px 16px 6px;
+transition: opacity 150ms cubic-bezier(0.4, 0, 0.2, 1);
+border: none;
+border-bottom: 1px solid;
+border-radius: 4px 4px 0 0;
+background: rgba(255, 206, 255, 1);
+height: 56px;
+}
+input:hover{
+    border-bottom-color: rgba(000,000,000,1);
+    background: #ECECEC;
+}
+:focus{
+    border-color: #6200ee;
+}
+
+.sel{
+    display: inline-block;
+    outline: 0;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    border-radius: 8px;
+    font-size: 13px;
+    height: 27px;
+    background-color: rgba(255, 206, 255, 1);
+    color: black;
+    padding: 0 20px;
+}
+    select:hover {
+        background-color: #ECECEC;
+    }
+
