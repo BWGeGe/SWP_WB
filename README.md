@@ -7,3 +7,5 @@ Material und Code zum Unterricht
 Textinputfeld hinzugefügt
 ## 2023-10-03
 Würfelsimulator mit try, throw und catch hinzugefügt
+## 2023-10-10
+Catfacts mit try, throw und catch hinzugefügt
