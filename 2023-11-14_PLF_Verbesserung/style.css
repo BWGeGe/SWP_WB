@@ -132,3 +132,7 @@ footer>div>p:hover{
 .tisch {
     grid-area: tis;
 }
+.news-article>article {
+    display:flex;
+    flex-direction: column-reverse;
+}
