@@ -5,6 +5,13 @@
 		},
 		{
 			"path": "../Graf/sj23-24-3ahwii-swp1x"
+		},
+		{
+			"name": "arrays-2nd-BWGeGe",
+			"path": "../Graf/array2nd/arrays-2nd-BWGeGe"
 		}
-	]
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "arrays-2nd-BWGeGe"
+	}
 }
