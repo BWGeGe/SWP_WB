@@ -7,7 +7,7 @@ class Person {
     constructor(name, gewichtPar, groessePar, geschlecht) {
         this.name = name;
         this.gewicht = gewichtPar;
-        this.groesse = groesse;
+        this.groesse = groessePar;
         this.geschlecht = geschlecht;
     }
     get bmi() {
@@ -15,29 +15,40 @@ class Person {
     }
     gewichtsKlasse(){
         if(this.bmi < 20 - this.geschlecht){
-            return `Sie sind im Untergewicht`;
+            return `Sie liegen im Untergewicht`;
         }
         if(this.bmi < 25 - this.geschlecht && this.bmi > 20 - geschlecht){
-            return `Sie sind im Normalgewicht`;
+            return `Sie liegen im Normalgewicht`;
         }
         if(this.bmi > 25 - this.geschlecht){
-            return `Sie sind im Übergewicht`;
+            return `Sie leigen im Übergewicht`;
         }
     }
     set groesse(groessePar) {
         // groesse in m
+        try{
         groessePar /= 100;
         if ((groessePar) < 0.5 || (groessePar) > 3) {
             throw new Error('ungültige Größe');
         }
+        console.log(groessePar);
         this.#groesse = groessePar;
+        }
+        catch(e){
+            alert(e);
+        }
     }
     set gewicht(gewichtPar) {
         // gewicht in kg
+        try{
         if (gewichtPar < 1 || gewichtPar > 500) {
             throw new Error('ungültiges Gewicht');
         }
         this.#gewicht = gewichtPar;
+        }
+        catch(e){
+            alert(e);
+        }
     }
     get gewicht() {
         return this.#gewicht;
@@ -46,10 +57,15 @@ class Person {
         return this.#groesse;
     } 
     toString() {
-        return `${this.name} wiegt ${this.gewicht} kg und ist ${this.groesse} m groß`;
+        if(this.geschlecht == "0"){ 
+            return `Herr ${this.name} wiegt ${this.gewicht} kg und ist ${this.groesse} m groß. ${this.gewichtsKlasse()}`;
+        }
+        else if(this.geschlecht == "1"){
+            return `Frau ${this.name} wiegt ${this.gewicht} kg und ist ${this.groesse} m groß. ${this.gewichtsKlasse()}`;
+        }
     }
 }
-
+/*
 p = new Person('Hans', 80, 1.8);
 console.log(p.gewicht);
 
@@ -60,7 +76,23 @@ a = [
 
 b = a.map((arr) => new Person(...arr));
 b.forEach((p) => console.log(p.toString()));
-
-function getInfo(){
-
+*/
+function getInfo(id){
+    console.log(document.getElementById(`${id}`).value);
+    return document.getElementById(`${id}`).value; 
+}
+function makeClass(){
+    let p = new Person(getInfo("name"), getInfo("gewicht"), getInfo("groesse"), gender());
+    document.querySelector("#Ergebnis").innerHTML = p.toString();
+    console.log(p.toString());
+}
+function gender(){
+    let chosenGender;
+    let genders = document.getElementsByName("geschlecht");
+    for(let i = 0; i< 2; i++){
+        if(genders[i].checked == true){
+            chosenGender = genders[i].value;
+        }
+    }
+    return chosenGender;
 }

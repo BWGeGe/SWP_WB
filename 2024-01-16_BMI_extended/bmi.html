@@ -8,16 +8,17 @@
     <script src="app.js" defer></script>
 </head>
 <body>
-    <input type="radio" id="geschlechtMaennlich" name="maennlich" value="0">
-    <label for="geschlechtMaennlich"> Maennlich</label> 
-    <input type="radio" id="geschlechtWeiblich" name="weiblich" value="1">
-    <label for="geschlechtWeiblich"> Weiblich</label>
-    <input type="text" id="name">
+    <input type="radio" id="geschlechtMaennlich" name="geschlecht" value="0">
+    <label for="geschlechtMaennlich"> Maennlich</label> <br>
+    <input type="radio" id="geschlechtWeiblich" name="geschlecht" value="1">
+    <label for="geschlechtWeiblich"> Weiblich</label> <br>
     <label for="groesse">Name:</label>
-    <input type="text" id="gewicht">
-    <label for="groesse">Gewicht:</label>
-    <input type="text" id="groesse">
-    <label for="groesse">Größe:</label>
-    <button onclick="getInfo()">Berechnen</button>
+    <input type="text" id="name"> <br>
+    <label for="groesse">Gewicht:</label> 
+    <input type="text" id="gewicht"> <br>
+    <label for="groesse">Größe:</label> 
+    <input type="text" id="groesse"> <br>
+    <button onclick="makeClass()">Berechnen</button> <br>
+    <p id="Ergebnis"></p>
 </body>
 </html>
