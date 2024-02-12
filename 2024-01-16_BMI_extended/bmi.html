@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI-Rechner</title>
+    <script src="app.js" defer></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>BMI-Rechner</h1>
+    <div class="container">
+    <p> Geschlecht: </p>
+    <input type="radio" id="geschlechtMaennlich" name="geschlecht" value="0">
+    <label for="geschlechtMaennlich"> Maennlich</label> <br>
+    <input type="radio" id="geschlechtWeiblich" name="geschlecht" value="1">
+    <label for="geschlechtWeiblich"> Weiblich</label> <br>
+    <label for="groesse">Name:</label>
+    <input type="text" id="name"> <br>
+    <label for="groesse">Gewicht:</label> 
+    <input type="text" id="gewicht"> <br>
+    <label for="groesse">Größe:</label> 
+    <input type="text" id="groesse"> <br>
+    <button onclick="makeClass()">Berechnen</button> <br>
+    </div>
+    <p id="Ergebnis"></p>
+</body>
+</html>
