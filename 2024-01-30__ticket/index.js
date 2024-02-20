@@ -100,8 +100,6 @@ function ticketKaufenClickHandler() {
     updateUI();
 }
 automat = new TicketAutomat(150);
-automat.anzahlEinstellen(2);
-automat.zielEinstellen('Graz');
 const einwerfenInput = document.getElementById('einwerfenBetrag');
 const einwerfenButton = document.getElementById('einwerfenButton');
 einwerfenButton.addEventListener('click', () => {
@@ -117,7 +115,7 @@ const anzahlPersonenInput = document.getElementById('anzahlPersonen');
 const fahrpreisSpan = document.getElementById('fahrpreis');
 const guthabenSpan = document.getElementById('guthaben');
 const ticketAusgabeTextarea = document.getElementById('ticketAusgabe');
-const einnahmenSpan = document.getElementById('einnahmen');
+const einnahmenSpan = document.getElementById('einnahmen'); 
 for(let i = 0; i < Object.keys(zieleUndPreise).length; i++) {
     const option = document.createElement('option');
     option.textContent = Object.keys(zieleUndPreise)[i];
@@ -128,6 +126,14 @@ function updateUI() {
     automat.anzahlEinstellen(anzahlPersonenInput.value);
     fahrpreisSpan.textContent = automat.gesamtPreis;
     einnahmenSpan.textContent = automat.einnahmenGesamt;
+    guthabenSpan.textContent =  Math.max(automat.eingeworfen-automat.gesamtPreis, 0); 
+}
+
+function resetTicket() {
+    einwerfenInput.value = '';
+    ticketAusgabeTextarea.textContent = '';
+    automat.zielEinstellen(Object.keys(zieleUndPreise)[0]);
+    updateUI();
 }
 zielSelect.addEventListener('change', updateUI);
 anzahlPersonenInput.addEventListener('input', updateUI);
