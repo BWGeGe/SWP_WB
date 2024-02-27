@@ -1,0 +1,33 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("../../prisma/dev.db")
+}
+
+model SpielKarte {
+  id             String    @id @default(cuid())
+  kartenName     String
+  angriffspunkte Int
+  lebenspunkte   Int
+  bildUrl        String
+  kartenTyp      KartenTyp @relation(fields: [kartenTypId], references: [id])
+  kartenTypId    String    @map("kartentyp_id")
+}
+
+model KartenTyp {
+  id                 String       @id @default(cuid())
+  kartenTypName      String
+  kartenTypSchwaeche String
+  kartenTypBildUrl   String
+  kartenTypFarbe     String
+  SpielKarte         SpielKarte[]
+}
