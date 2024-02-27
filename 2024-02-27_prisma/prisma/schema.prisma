@@ -10,24 +10,24 @@ generator client {
 
 datasource db {
   provider = "sqlite"
-  url      = env("../../prisma/dev.db")
+  url      = "file:./dev.db"
 }
 
 model SpielKarte {
-  id             String    @id @default(cuid())
+  id             String @id @default(cuid())
   kartenName     String
   angriffspunkte Int
   lebenspunkte   Int
   bildUrl        String
-  kartenTyp      KartenTyp @relation(fields: [kartenTypId], references: [id])
-  kartenTypId    String    @map("kartentyp_id")
+  kartenTyp      KartenTyp @relation(fields: [kartenTypId], references: [id]) 
+  kartenTypId    String 
 }
 
 model KartenTyp {
-  id                 String       @id @default(cuid())
+  id                 String @id @default(cuid())
   kartenTypName      String
   kartenTypSchwaeche String
   kartenTypBildUrl   String
   kartenTypFarbe     String
-  SpielKarte         SpielKarte[]
+  spielKarte         SpielKarte[]
 }
