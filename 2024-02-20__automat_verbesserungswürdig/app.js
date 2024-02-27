@@ -1,7 +1,7 @@
 class TicketAutomat {
     #einnahmenGesamt;
     #eingeworfen;
-    #anzahlPersonen;
+    #anzahlPersonen = 1;
     #ziel;
     constructor(initialGeld) {
         this.einnahmenGesamt = initialGeld;
@@ -37,10 +37,11 @@ class TicketAutomat {
         return zieleUndPreise[this.#ziel] * this.#anzahlPersonen;
     }
     anzahlEinstellen(wieviele) {
-        if (wieviele < 1 || wieviele > 10) {
+        let anzahl = parseInt(wieviele);
+        if (anzahl < 1 || anzahl > 10 || isNaN(wieviele)) {
             throw new Error('falsche Anzahl Personnen');
         }
-        this.#anzahlPersonen = wieviele;
+        this.#anzahlPersonen = anzahl;
     }
     ticketKaufen() {
         // wirft evtl. einen Fehler
@@ -97,7 +98,7 @@ Restgeld: € ${this.#gegeben - this.#summe},-
 function reset() {
     ticketAusgabeTextarea.textContent = '';
     einwerfenInput.value = "";
-    anzahlPersonenInput.value = "";
+    anzahlPersonenInput.value = "1";
     updateUI();
 }
 function ticketKaufenClickHandler() {
@@ -140,6 +141,6 @@ function updateUI() {
     fahrpreisSpan.textContent = automat.gesamtPreis;
     einnahmenSpan.textContent = automat.einnahmenGesamt;
 }
-zielSelect.addEventListener('change', updateUI());
-anzahlPersonenInput.addEventListener('change', updateUI());
+zielSelect.addEventListener('change', updateUI);
+anzahlPersonenInput.addEventListener('change', updateUI);
 updateUI();
