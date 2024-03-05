@@ -5,29 +5,28 @@
 // Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
 
 generator client {
-  provider = "prisma-client-js"
+    provider = "prisma-client-js"
 }
 
 datasource db {
-  provider = "sqlite"
-  url      = "file:./dev.db"
+    provider = "sqlite"
+        url      = "file:./CARDRAC.db"
 }
 
 model SpielKarte {
-  id             String @id @default(cuid())
-  kartenName     String
-  angriffspunkte Int
-  lebenspunkte   Int
-  bildUrl        String
-  kartenTyp      KartenTyp @relation(fields: [kartenTypId], references: [id]) 
-  kartenTypId    String 
+    id             String @id @default(cuid())
+        name     String
+        angriffsPunkte Int
+        lebensPunkte   Int
+        bildUrl        String
+        kartenTyp      KartenTyp @relation(fields: [id], references: [id]) 
 }
 
 model KartenTyp {
-  id                 String @id @default(cuid())
-  kartenTypName      String
-  kartenTypSchwaeche String
-  kartenTypBildUrl   String
-  kartenTypFarbe     String
-  spielKarte         SpielKarte[]
+    id                 String @id @default(cuid())
+        name      String
+        schwaeche String
+        bildUrl   String
+        farbe     String
+        spielKarte SpielKarte[]
 }
