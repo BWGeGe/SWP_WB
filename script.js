@@ -1,7 +1,7 @@
 "use strict";
 
 const ul = document.getElementById("meineUL");
-
+5
 function addElement() {
     const li = document.createElement("li");
     li.innerHTML = document.getElementById("Text").value;
