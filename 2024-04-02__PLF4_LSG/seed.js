@@ -14,7 +14,7 @@ async function seed() {
             Email: fakerDE.internet.email(),
         };
         console.log('seeding');
-        const createBenutzer = await prisma.benutzer.create({
+        await prisma.benutzer.create({
             data: user,
         });
     }
@@ -29,7 +29,7 @@ async function seed() {
             artist: fakerDE.person.fullName(),
         };
         console.log('seeding');
-        const createTrack = await prisma.track.create({
+        await prisma.track.create({
             data: Track,
         });
     }
