@@ -1,5 +1,5 @@
 const { PrismaClient } = require('@prisma/client');
-const prisma = new PrismaClient({ log: ['query', 'info', 'warn', 'error'] });
+const prisma = new PrismaClient();
 let userNametemp;
 let trackNametemp;
 
@@ -37,7 +37,7 @@ async function getWatchlistNamesForUser(userName) {
         },
         where: {
             benutzer: {
-                id: userName,
+                fullname: userName,
             },
         },
     });
@@ -62,6 +62,18 @@ async function watchlistfromTrackName(trackName) {
     });  
 }
 
+async function userFromWatchlist(onWatchlists) {
+    return await prisma.benutzer.findMany({
+        select: {
+            fullname: true,
+        },
+        include: {
+            watchLists: {
+                some: { in:{onWatchlists},}, 
+            },
+        },
+    });  
+}
 async function main() {
 if(userName != undefined) {
     const lists = await getWatchlistNamesForUser(userName);
@@ -79,6 +91,10 @@ if(trackName != undefined) {
     const onWatchlists = await watchlistfromTrackName(trackName);
     for(let wl of onWatchlists) {
         console.log(`Track ${trackName} is on Watchlist ${wl.name}`)
+    }
+    const users = await userFromWatchlist(onWatchlists);
+    for(let user of users) {
+        console.log(`User ${user.fullname} has Track ${trackName} on his Watchlist`)
     }
 }
 }
