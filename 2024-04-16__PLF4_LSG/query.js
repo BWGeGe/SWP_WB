@@ -52,24 +52,11 @@ async function tracksFromWatchlist(id) {
     });
 }
 
-async function watchlistfromTrackName(trackName) {
-    return await prisma.watchlist.findMany({
-        where: {
-            tracks: {
-                some: { name: trackName },
-            },
-        },
-    });  
-}
-
-async function userFromWatchlist(onWatchlists) {
+async function userFromTrackName(trackName) {
     return await prisma.benutzer.findMany({
-        select: {
-            fullname: true,
-        },
-        include: {
+        where: {
             watchLists: {
-                some: { in:{onWatchlists},}, 
+                some: {tracks: { some: {name: trackName},},},
             },
         },
     });  
@@ -83,19 +70,13 @@ if(userName != undefined) {
             `${userName}'s Watchlist ${wl.name} ... ${tracks.length} tracks`
         );
         for (let t of tracks) {
-            console.log(`    ${t.name} by ${t.artist} (${t.duration} secs)`);
+            console.log(`${t.name} by ${t.artist} (${t.duration} secs)`);
         }
     }
 }
 if(trackName != undefined) {
-    const onWatchlists = await watchlistfromTrackName(trackName);
-    for(let wl of onWatchlists) {
-        console.log(`Track ${trackName} is on Watchlist ${wl.name}`)
-    }
-    const users = await userFromWatchlist(onWatchlists);
+    const users = await userFromTrackName(trackName);
     for(let user of users) {
-        console.log(`User ${user.fullname} has Track ${trackName} on his Watchlist`)
-    }
-}
+        console.log(`User ${user.fullname} has Track ${trackName} on his Watchlist`); } }
 }
 main();
