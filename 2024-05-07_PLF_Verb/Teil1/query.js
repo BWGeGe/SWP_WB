@@ -13,10 +13,7 @@ for(let zoo of zoos) {
     console.log(zoo.stadt);
 }
 
-let zooInfo = await prisma.zoo.findUnique({
-    where: {
-        id: 'clvw6q9vl0002qulzi8wfa245',
-    },
+let zooInfo = await prisma.zoo.findFirst({
     select: {
         land: true,
         stadt: true,
@@ -27,12 +24,8 @@ let zooInfo = await prisma.zoo.findUnique({
                 name: true,
                 tiere: {
                     select: {
-                    _count: {
-                    select: {
-                        name: true,
+                    name:true,
                     },
-                    },
-                },
                 },
             },
         },
@@ -47,6 +40,7 @@ for( abteilung of zooInfo.abteilungen){
     for(tier of abteilung.tiere){
         console.log(tier.name);
     }
+    console.log(`insgesamt ${abteilung.tiere.length} Tiere\n`);
 }
 const mitArbeiterZoo = await prisma.mitarbeiter.findMany({
     select: {
@@ -67,7 +61,7 @@ const mitArbeiterZoo = await prisma.mitarbeiter.findMany({
         {
             some: {
                 zoo: {
-                    id: 'clvw6q9vl0002qulzi8wfa245',
+                    id: zooInfo.id,
                 },
             },
         },
