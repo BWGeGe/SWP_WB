@@ -1,0 +1,42 @@
+generator client {
+    provider = "prisma-client"
+    output   = "./generated"
+    runtime  = "deno"
+}
+
+datasource db {
+    provider = "sqlite"
+    url      = env("DATABASE_URL")
+}
+
+model Song {
+    id       String  @id @default(cuid())
+    title    String
+    album    Album?  @relation(fields: [albumId], references: [id])
+    albumId  String?
+    genre    Genre   @relation(fields: [genreId], references: [id])
+    artists Artist[] // m:n
+    genreId  String
+    duration Int // duration in seconds
+}
+
+model Album {
+    id          String   @id @default(cuid())
+    title       String
+    artists     Artist[] // m:n
+    songs       Song[]
+    releaseYear Int
+}
+
+model Artist {
+    id     String  @id @default(cuid())
+    name   String  @unique
+    songs  Song[]  // m:n
+    albums Album[] // m:n
+}
+
+model Genre {
+    id    String @id @default(cuid())
+    name  String @unique
+    songs Song[]
+}
