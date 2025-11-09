@@ -1,12 +1,33 @@
 {
   "version": "5",
   "specifiers": {
-    "npm:@prisma/client@^6.16.2": "6.16.2",
-    "npm:prisma@*": "6.16.2"
+    "jsr:@std/assert@1": "1.0.14",
+    "jsr:@std/internal@^1.0.10": "1.0.10",
+    "npm:@prisma/client@^6.16.2": "6.16.2_prisma@6.16.2",
+    "npm:@types/node@^24.10.0": "24.10.0",
+    "npm:prisma@*": "6.16.2",
+    "npm:prisma@latest": "6.16.2"
+  },
+  "jsr": {
+    "@std/assert@1.0.14": {
+      "integrity": "68d0d4a43b365abc927f45a9b85c639ea18a9fab96ad92281e493e4ed84abaa4",
+      "dependencies": [
+        "jsr:@std/internal"
+      ]
+    },
+    "@std/internal@1.0.10": {
+      "integrity": "e3be62ce42cab0e177c27698e5d9800122f67b766a0bea6ca4867886cbde8cf7"
+    }
   },
   "npm": {
-    "@prisma/client@6.16.2": {
+    "@prisma/client@6.16.2_prisma@6.16.2": {
       "integrity": "sha512-E00PxBcalMfYO/TWnXobBVUai6eW/g5OsifWQsQDzJYm7yaY+IRLo7ZLsaefi0QkTpxfuhFcQ/w180i6kX3iJw==",
+      "dependencies": [
+        "prisma"
+      ],
+      "optionalPeers": [
+        "prisma"
+      ],
       "scripts": true
     },
     "@prisma/config@6.16.2": {
@@ -50,6 +71,12 @@
     },
     "@standard-schema/spec@1.0.0": {
       "integrity": "sha512-m2bOd0f2RT9k8QJx1JN85cZYyH1RqFBdlwtkSlf4tBDYLCiiZnv1fIIwacK6cqwXavOydf0NPToMQgpKq+dVlA=="
+    },
+    "@types/node@24.10.0": {
+      "integrity": "sha512-qzQZRBqkFsYyaSWXuEHc2WR9c0a0CXwiE5FWUvn7ZM+vdy1uZLfCunD38UzhuB7YN/J11ndbDBcTmOdxJo9Q7A==",
+      "dependencies": [
+        "undici-types"
+      ]
     },
     "c12@3.1.0": {
       "integrity": "sha512-uWoS8OU1MEIsOv8p/5a82c3H31LsWVR5qiyXVfBNOzfffjUWtPnhAb4BYI2uG2HfGmZmFjCtui5XNWaps+iFuw==",
@@ -188,11 +215,20 @@
     },
     "tinyexec@1.0.1": {
       "integrity": "sha512-5uC6DDlmeqiOwCPmK9jMSdOuZTh8bU39Ys6yidB+UTt5hfZUPGAypSgFRiEp+jbi9qH40BLDvy85jIU88wKSqw=="
+    },
+    "undici-types@7.16.0": {
+      "integrity": "sha512-Zz+aZWSj8LE6zoxD+xrjh4VfkIG8Ya6LvYkZqtUQGJPZjYl53ypCaUwWqo7eI0x66KBGeRo+mlBEkMSeSZ38Nw=="
     }
   },
   "workspace": {
     "dependencies": [
+      "jsr:@std/assert@1",
       "npm:@prisma/client@^6.16.2"
-    ]
+    ],
+    "packageJson": {
+      "dependencies": [
+        "npm:@types/node@^24.10.0"
+      ]
+    }
   }
 }

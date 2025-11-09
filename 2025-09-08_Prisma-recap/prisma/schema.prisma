@@ -34,7 +34,6 @@ model Answer {
     answer                 String
     incorrect_in_questions Question[] @relation(name: "IncorrectAnswers")
     correct_in_questions   Question[] @relation(name: "CorrectAnswer")
-    questionId             String
 }
 
 model Category {
