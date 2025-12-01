@@ -32,7 +32,7 @@ async function main() {
 
                 // Create the incorrect answers in the database
                 const incorrectAnswers = await Promise.all(
-                    question.incorrect_answers.map(async (incorrect) => {
+                    question.incorrect_answers.map(async (incorrect: any) => {
                                 return await createAnswer(incorrect);
                     }),
                 );
@@ -110,14 +110,14 @@ export async function ensureBasics() {
     const categoriesApi = await http("https://opentdb.com/api_category.php");
     // Seed categories
     await prisma.category.createMany({
-        data: categoriesApi.trivia_categories.map((cat) => ({
+        data: categoriesApi.trivia_categories.map((cat: any) => ({
             opentdb_id: cat.id,
             name: cat.name,
         })),
     });
 }
 
-export async function createAnswer(answerText){
+export async function createAnswer(answerText: any){
     const thisAnswer = await prisma.answer.findFirst({
         where: {answer: answerText},
     });

@@ -1,22 +1,14 @@
 {
   "version": "5",
   "specifiers": {
-    "jsr:@std/assert@1": "1.0.14",
-    "jsr:@std/internal@^1.0.10": "1.0.10",
-    "npm:@prisma/client@^6.16.2": "6.16.2_prisma@6.16.2",
+    "jsr:@hono/hono@^4.10.7": "4.10.7",
     "npm:@types/node@^24.10.0": "24.10.0",
     "npm:prisma@*": "6.16.2",
     "npm:prisma@latest": "6.16.2"
   },
   "jsr": {
-    "@std/assert@1.0.14": {
-      "integrity": "68d0d4a43b365abc927f45a9b85c639ea18a9fab96ad92281e493e4ed84abaa4",
-      "dependencies": [
-        "jsr:@std/internal"
-      ]
-    },
-    "@std/internal@1.0.10": {
-      "integrity": "e3be62ce42cab0e177c27698e5d9800122f67b766a0bea6ca4867886cbde8cf7"
+    "@hono/hono@4.10.7": {
+      "integrity": "b60512559d554f20a945e07a6c5f115e57cbd4c024da9217833c8e7b2c90355d"
     }
   },
   "npm": {
@@ -222,8 +214,7 @@
   },
   "workspace": {
     "dependencies": [
-      "jsr:@std/assert@1",
-      "npm:@prisma/client@^6.16.2"
+      "jsr:@hono/hono@^4.10.7"
     ],
     "packageJson": {
       "dependencies": [
